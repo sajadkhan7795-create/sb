@@ -7,27 +7,33 @@
   <meta
     name="viewport"
     content="width=device-width,initial-scale=1" />
-  <title>S &amp; B
+  <title>TwinTech —
+    S &amp; B
     Technical
-    Services</title>
+    Services (Basit
+    &amp; Sajjad)
+  </title>
   <meta
     name="description"
-    content="S & B Technical Services — CCTV, Networking, Internet, Intercom, Electric Cabling. Serving Islamabad & Rawalpindi." />
+    content="S & B Technical Services — CCTV, Networking, Internet, Intercom, Electric Cabling. By Basit Ali & Sajjad Ali. Serving Islamabad & Rawalpindi." />
+  <meta
+    name="theme-color"
+    content="#041027" />
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --bg: #040b18;
-      --panel: #071428;
-      --muted: #9fb0c8;
+      --bg-0: #030618;
+      --bg-1: #05132a;
+      --muted: #9fb0c7;
       --neon1: #00ffd0;
       --neon2: #00c2ff;
       --accent: linear-gradient(90deg, var(--neon1), var(--neon2));
       --glass: rgba(255, 255, 255, 0.03);
       --card-radius: 14px;
-      --max-width: 1100px;
-      --ease: cubic-bezier(.2, .9, .3, 1);
+      --maxw: 1150px;
+      --ease: cubic-bezier(.2, .95, .2, 1);
     }
 
     * {
@@ -39,53 +45,72 @@
       height: 100%
     }
 
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background:
-        radial-gradient(1000px 450px at 10% 8%, rgba(255, 255, 255, 0.04), transparent 9%),
-        linear-gradient(180deg, var(--bg) 0%, #041428 50%);
-      color: #e8f7ff;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      line-height: 1.5;
-      overflow-x: hidden;
+    
+      body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    color: #e8fbff;
+    background: radial-gradient(900px 360px at 10% 8%, rgba(0, 194, 255, 0.03), transparent 8%), linear-gradient(180deg, var(--bg-0), #030618);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+
     }
 
-    /* NAVBAR */
+    /* particles canvas */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* wrapper */
+    .wrap {
+      position: relative;
+      z-index: 10;
+      max-width: var(--maxw);
+      margin: 28px auto;
+      padding: 0 20px;
+    }
+
+    /* navbar */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 200;
       display: flex;
       align-items: center;
-      gap: 18px;
       justify-content: space-between;
-      padding: 12px 20px;
+      gap: 18px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      border-radius: 12px;
       backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(3, 18, 36, 0.72), rgba(3, 18, 36, 0.36));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+      position: sticky;
+      top: 12px;
+      z-index: 60;
     }
 
     .brand {
       display: flex;
-      align-items: center;
       gap: 12px;
+      align-items: center;
       text-decoration: none;
-      color: inherit
+      color: inherit;
     }
 
     .logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 10px;
+      width: 100px;
+      height: 54px;
+      border-radius: 12px;
       display: grid;
       place-items: center;
       background: var(--accent);
-      color: #03131a;
+      color: #001820;
       font-weight: 800;
-      font-size: 15px;
-      box-shadow: 0 6px 26px rgba(153, 13, 13, 0.511);
+      font-size: 16px;
+      box-shadow: 0 12px 38px rgba(0, 194, 255, 0.08);
     }
 
     .brand h1 {
@@ -93,180 +118,200 @@
       font-size: 16px
     }
 
+    .brand p {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
     nav {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center
     }
 
     .nav-link {
       color: var(--muted);
-      text-decoration: none;
       padding: 8px 10px;
-      border-radius: 8px;
+      border-radius: 10px;
+      text-decoration: none;
       font-weight: 600;
-      transition: all .22s var(--ease);
+      transition: all .18s var(--ease);
     }
 
     .nav-link:hover {
       color: var(--neon1);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 194, 255, 0.05)
+      transform: translateY(-3px)
     }
 
-    .nav-link.active {
-      color: #001218;
-      background: var(--accent);
-      box-shadow: 0 10px 34px rgba(0, 194, 255, 0.10);
+    .nav-cta {
+      display: flex;
+      gap: 8px;
+      align-items: center
     }
 
-    /* HERO */
+    /* hero */
     .hero {
-      max-width: var(--max-width);
-      margin: 22px auto;
-      padding: 28px;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero-left {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      padding: 34px;
-      border-radius: var(--card-radius);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 18px 50px rgba(2, 8, 18, 0.6);
-      overflow: hidden;
       position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      text-align: center;
+      padding: 40px 28px;
+      border-radius: 18px;
+      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
+      border: 1px solid var(--neon1);
+      box-shadow: 0 26px 90px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
     }
 
-    .hero-left:before {
+    /* hero background image overlay (Unsplash) */
+    .hero:before {
       content: "";
       position: absolute;
-      right: -10%;
-      top: -40%;
-      width: 520px;
-      height: 520px;
-      border-radius: 50%;
-      filter: blur(80px);
-      background: radial-gradient(circle at center, rgba(0, 255, 191, 0.05), transparent 40%);
-      transform: translateY(0);
-      animation: float 8s ease-in-out infinite;
+      inset: 0;
+      z-index: 0;
+      background-image: url("https://source.unsplash.com/1600x900/?security-camera,network");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.06;
+      filter: blur(2px) saturate(120%);
+      transform: scale(1.04);
+      
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(8px)
-      }
-
-      100% {
-        transform: translateY(0)
-      }
+    .hero .inner {
+      position: relative;
+      z-index: 2;
+      max-width: 920px;
+      margin: 0 auto;
     }
 
-    .kicker {
-      display: inline-block;
-      padding: 8px 12px;
-      border-radius: 10px;
-      background: rgba(0, 255, 191, 0.04);
-      color: var(--neon1);
-      font-weight: 700;
-      margin-bottom: 12px
-    }
-
-    h2.hero-title {
+    .title-main {
+      font-size: 30px;
       margin: 0;
-      font-size: 32px;
-      line-height: 1.05;
-      color: #eafffb
+      line-height: 1.06;
+      font-weight: 800
     }
 
-    .tagline {
-      color: var(--muted);
-      margin-top: 10px;
-      font-size: 15px;
-      min-height: 22px;
-      margin-bottom: 18px
+    .title-accent {
+      background: var(--accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .byline {
+      margin: 6px 0 12px;
+      color: var(--muted)
+    }
+
+    .names {
+      display: inline-flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 8px 0 6px;
+    }
+
+    .names .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--neon2);
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.02)
     }
 
     .typed {
-      color: var(--neon2);
+      margin-top: 8px;
       font-weight: 700;
-      white-space: nowrap;
+      color: var(--neon1);
+      min-height: 26px;
       border-right: 2px solid rgba(255, 255, 255, 0.06);
       padding-right: 6px;
+      white-space: nowrap
     }
 
-    .cta-row {
+    .hero-actions {
       display: flex;
       gap: 12px;
-      margin-top: 16px;
-      flex-wrap: wrap
+      justify-content: center;
+      margin-top: 18px;
+      z-index: 2;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 800;
+      text-decoration: none;
       border: 0;
       cursor: pointer;
-      padding: 12px 16px;
-      border-radius: 10px;
-      font-weight: 700;
-      text-decoration: none;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
       transition: transform .18s var(--ease), box-shadow .18s var(--ease);
     }
 
-    .btn-primary {
+    .btn-glow {
       background: var(--accent);
-      color: #001018;
-      box-shadow: 0 12px 40px rgba(0, 194, 255, 0.12)
+      color: #001820;
+      box-shadow: 0 16px 60px rgba(0, 194, 255, 0.12)
     }
 
-    .btn-ghost {
-      background: linear-gradient(90deg, rgba(39, 78, 255, 1.525), rgba(255, 255, 255, 0.01));
+    .btn-outline {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
       color: var(--neon1);
-      border: 1px solid rgba(0, 255, 191, 0.05)
+      border: 1px solid rgba(0, 255, 191, 0.04)
     }
 
-    .btn-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(0, 194, 255, 0.14)
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+      flex-wrap: wrap
     }
 
-    .btn-ghost:hover {
-      transform: translateY(-3px)
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--muted);
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.02)
     }
 
     /* marquee */
     .marquee-wrap {
-      margin-top: 20px;
+      margin: 18px auto 6px;
+      max-width: var(--maxw);
+      padding: 6px 20px;
+    }
+
+    .marquee {
       overflow: hidden;
       border-radius: 10px;
-      padding: 8px;
       background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
       border: 1px solid rgba(255, 255, 255, 0.02)
     }
 
-    .marquee {
+    .marquee-inner {
       display: inline-block;
       white-space: nowrap;
-      animation: marquee 18s linear infinite;
+      animation: marq 20s linear infinite;
       color: var(--muted);
-      font-weight: 600
+      padding: 10px 18px;
+      font-weight: 700
     }
 
-    .marquee span {
-      padding: 0 28px;
-      color: var(--neon1)
+    .marq-item {
+      color: var(--neon2);
+      padding: 0 18px;
+      display: inline-block
     }
 
-    @keyframes marquee {
+    @keyframes marq {
       0% {
         transform: translateX(0)
       }
@@ -276,123 +321,122 @@
       }
     }
 
-    /* Quick card */
-    .quick-card {
-      background: linear-gradient(180deg, rgba(0, 255, 191, 0.03), rgba(0, 194, 255, 0.01));
-      border-radius: 14px;
-      padding: 66px;
-      border: 1px solid rgba(0, 255, 191, 0.06);
-      color: #f1f3f5;
-      box-shadow: 0 10px 40px rgba(122, 45, 45, 0.5);
+    /* about */
+    .about {
+      max-width: var(--maxw);
+      margin: 18px auto;
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+      border: 1px solid rgba(255, 255, 255, 0.03)
     }
 
-    .quick-card h3 {
-      margin: 0 0 8px 0
+    .about-left {
+      flex: 1
     }
 
-    .quick-card p {
-      margin: 0 0 12px 0;
-      color: rgba(95, 222, 236, 0.64)
+    .about-right {
+      width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 14px;
+      background: linear-gradient(90deg, rgba(0, 255, 191, 0.03), rgba(0, 194, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.02)
     }
 
-    .quick-row {
-      display: grid;
-      gap: 10px
+    .about img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
-    /* SERVICES */
+    /* services */
     .services {
-      max-width: var(--max-width);
-      margin: 28px auto;
-      padding: 0 20px 30px;
+      max-width: var(--maxw);
+      margin: 18px auto;
+      padding: 0 20px 26px;
+    }
+
+    .services h2 {
+      color: var(--neon1);
+      margin: 0 0 12px 6px
+    }
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      align-items: start;
-      /* ensure same vertical alignment */
+      align-items: start
     }
 
-    /* Card adjustments for consistent height & typography */
-    .svc {
+    .service-card {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
       border-radius: 12px;
-      padding: 18px;
+      padding: 16px;
       border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 12px 34px rgba(2, 8, 18, 0.6);
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: flex-start;
+      min-height: 140px;
       transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
-      min-height: 116px;
-      /* consistent card height */
     }
 
-    .svc .icon {
-      width: 56px;
-      height: 56px;
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+      border-color: rgba(0, 255, 191, 0.12)
+    }
+
+    .svc-icon {
+      width: 68px;
+      height: 68px;
       border-radius: 12px;
       display: grid;
       place-items: center;
-      font-weight: 800;
-      color: #001218;
-      background: linear-gradient(135deg, var(--neon1), var(--neon2));
-      box-shadow: 0 16px 40px rgba(0, 194, 255, 0.08);
-      font-size: 20px;
-      flex-shrink: 0;
+      background: var(--accent);
+      color: #001820;
+      font-weight: 900;
+      font-size: 22px;
+      box-shadow: 0 12px 36px rgba(0, 194, 255, 0.08)
     }
 
-    .svc .text {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .svc h4 {
+    .svc-text h3 {
       margin: 0;
-      font-size: 16px;
       color: var(--neon1);
+      font-size: 16px
     }
 
-    /* unified heading color */
-    .svc p {
-      margin: 0;
+    .svc-text p {
+      margin: 6px 0 0 0;
       color: var(--muted);
       font-size: 13px
     }
 
-    .svc:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0, 255, 191, 0.12);
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6)
-    }
-
-    /* CONTACT */
-    .contact-section {
-      max-width: var(--max-width);
-      margin: 30px auto;
+    /* contact */
+    .contact {
+      max-width: var(--maxw);
+      margin: 22px auto;
       padding: 22px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
       display: grid;
       grid-template-columns: 1fr 420px;
-      gap: 22px;
-    }
-
-    .contact-form {
-      padding: 6px 8px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px
+      gap: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+      border: 1px solid var(--neon1)
     }
 
     label {
+      display: block;
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 6px;
-      display: block
+      margin-bottom: 6px
     }
 
     input,
@@ -401,14 +445,21 @@
       width: 100%;
       padding: 12px;
       border-radius: 10px;
-      background: rgba(2, 6, 12, 0.737);
-      border: 1px solid rgba(64, 212, 238, 0.83);
-      color: #e8f7ff;
+      background: rgba(2, 6, 12, 0.36);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      color: #e8fbff;
+      font-size: 14px
     }
 
     textarea {
       min-height: 120px;
       resize: vertical
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
     }
 
     .submit-row {
@@ -420,96 +471,89 @@
 
     .wa-btn {
       background: linear-gradient(90deg, #25D366, #1DA851);
-      color: rgb(47, 42, 3,1);
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-family: cursive;
-      font-size: 14px;
+      color: #001;
+      width: 180px;
+      padding: 12px 16px;
+      border-radius: 12px;
       font-weight: 800;
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.12);
-      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
       border: 0;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.12);
+      transition: transform .18s var(--ease)
     }
 
     .wa-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 60px rgba(29, 168, 81, 0.14)
+      transform: translateY(-6px)
     }
 
-    .wa-btn.pulse {
-      animation: pulse 2.4s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.10)
-      }
-
-      50% {
-        box-shadow: 0 12px 46px rgba(37, 211, 102, 0.16)
-      }
-
-      100% {
-        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.10)
-      }
-    }
-
-    /* Map / QR side */
-    .map {
+    .call-btn {
+      background: linear-gradient(90deg, var(--neon1), var(--neon2));
+      color: #001;
+      width: 180px;
+      padding: 12px 16px;
       border-radius: 12px;
-      overflow: hidden;
+      font-weight: 800;
+      border: 0;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(0, 194, 255, 0.12)
+    }
+
+    /* map at end */
+    .map-wrap {
+      max-width: var(--maxw);
+      margin: 22px auto;
+      padding: 12px;
+      border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.03);
-      margin-top: 12px
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.01))
     }
 
-    .qr-note {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px
+    .map-wrap iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 10px
     }
 
-    /* FOOTER */
+    /* footer */
     footer {
+      max-width: var(--maxw);
+      margin: 18px auto;
       text-align: center;
-      padding: 20px;
       color: var(--muted);
-      margin-top: 22px;
-      border-top: 1px solid rgba(255, 255, 255, 0.02)
+      font-size: 13px;
+      padding: 12px 20px
     }
 
-    /* reveal animations */
+    /* reveal */
     .reveal {
       opacity: 0;
-      transform: translateY(18px) scale(.995);
+      transform: translateY(18px);
       transition: all .7s var(--ease)
     }
 
     .reveal.show {
       opacity: 1;
-      transform: translateY(0) scale(1)
+      transform: translateY(0)
     }
 
-    /* Responsive */
-    @media (max-width:1050px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 18px;
-      }
-
-      .services {
+    /* responsive */
+    @media (max-width:980px) {
+      .grid {
         grid-template-columns: repeat(2, 1fr)
       }
 
-      .contact-section {
-        grid-template-columns: 1fr;
+      .contact {
+        grid-template-columns: 1fr
+      }
+
+      .about {
+        flex-direction: column
       }
     }
 
     @media (max-width:640px) {
-      .services {
+      .grid {
         grid-template-columns: 1fr
       }
 
@@ -518,24 +562,16 @@
       }
 
       .logo {
-        width: 40px;
-        height: 40px
+        width: 46px;
+        height: 46px
       }
 
-      .hero-left {
-        padding: 22px
+      .hero {
+        padding: 20px
       }
 
-      .kicker {
-        padding: 6px 10px
-      }
-
-      .hero-title {
-        font-size: 24px
-      }
-
-      .typed {
-        font-size: 15px
+      .title-main {
+        font-size: 22px
       }
     }
   </style>
@@ -543,357 +579,467 @@
 
 <body>
 
-  <!-- header -->
-  <header>
-    <a class="brand"
-      href="#top"
-      aria-label="S & B Technical Services home">
-      <div
-        class="logo"
-        aria-hidden="true">
-        S&amp;B
-      </div>
-      <div>
-        <h1
-          style="margin:0;font-size:15px">
-          S &amp; B
-          Technical
-          Services
-        </h1>
+  <!-- particles -->
+  <canvas
+    id="particles"
+    aria-hidden="true"></canvas>
+
+  <div class="wrap"
+    role="main">
+
+    <!-- NAV -->
+    <header
+      role="banner"
+      aria-label="Main navigation">
+      <a class="brand"
+        href="#top"
+        aria-label="Go to top">
         <div
-          style="font-size:12px;color:var(--muted)">
-          Islamabad
-          &amp;
-          Rawalpindi
+          class="logo"
+          aria-hidden="true">
+          Twin-Tech</div>
+        <div>
+          <h1>S
+            &amp; B
+            Technical
+            Services
+          </h1>
+          <p>By
+            Basit
+            Ali
+            &amp;
+            Sajjad
+            Ali —
+            Islamabad
+            &amp;
+            Rawalpindi
+          </p>
         </div>
-        
-      </div>
-    </a>
+      </a>
 
-    <nav
-      aria-label="Main navigation"
-      id="nav">
-      <a class="nav-link"
-        href="#top">Home</a>
-      <a class="nav-link"
-        href="#services">Services</a>
-      <a class="nav-link"
-        href="#contact">Get
-        Quote</a>
-      <a class="nav-link"
-        href="tel:+923105686088">Call</a>
-    </nav>
-  </header>
-
-  <main id="top"
-    tabindex="-1">
+      <nav
+        aria-label="Primary">
+        <a class="nav-link"
+          href="#top">Home</a>
+        <a class="nav-link"
+          href="#services">Services</a>
+        <a class="nav-link"
+          href="#contact">Contact</a>
+        <a class="nav-link"
+          href="#map">Map</a>
+      </nav>
+    </header>
 
     <!-- HERO -->
     <section
-      class="hero"
+      class="hero reveal"
+      id="top"
       aria-label="Intro">
       <div
-        class="hero-left reveal">
-        <div class="kicker"> PROFESSIONAL • TRUSTED • Also Available in DHA</div>
-        <h2
-          class="hero-title">
-          Reliable
-          <span
-            style="color:var(--neon1)">Installations</span>
-          for Home &
-          Office
-        </h2>
-
+        class="inner">
         <div
-          class="tagline"
-          aria-hidden="false">
+          class="title-main">
+          TwinTech —
           <span
-            id="typed-target"
-            class="typed"
-            aria-live="polite"></span>
+            class="title-accent">Smart
+            Installations</span>
+        </div>
+        <div
+          class="byline">
+          S &amp; B
+          Technical
+          Services
         </div>
 
         <div
-          class="cta-row">
-          <a class="btn btn-primary"
-            href="#contact">💬
-            Request
-            Free
-            Quote</a>
-          <a class="btn btn-ghost" href="tel:+923105686088">📞 Call +923105686088</a>
-        </div>
-
-        <div
-          class="marquee-wrap"
-          aria-hidden="true"
-          role="presentation">
+          class="names">
           <div
-            class="marquee"
-            style="padding-left:12px">
-            <span>IP
-              Cameras</span>
-            •
-            <span>Networking</span>
-            •
-            <span>Internet</span>
-            •
-            <span>Intercom</span>
-            • <span>Electric
-              Cabling</span>
-            • <span>AC
-              Service</span>
-            &nbsp;&nbsp;&nbsp;
-            <span>IP
-              Cameras</span>
-            •
-            <span>Networking</span>
-            •
-            <span>Internet</span>
-            •
-            <span>Router Configuration</span>
-            •
-            <span>Intercom</span>
-            • <span>Electric
-              Cabling</span>
-            • <span>AC
-              Service</span>
-              •
-            <span>AC Installation</span>
+            class="pill">
+            Basit
+            Ali
+          </div>
+          <div
+            class="pill">
+            Sajjad
+            Ali
           </div>
         </div>
 
         <div
-          class="hero-features"
-          style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap"
+          id="typed"
+          class="typed"
+          aria-live="polite">
+        </div>
+
+        <div
+          class="hero-actions"
+          style="margin-top:18px;">
+          <!-- Sajjad buttons -->
+          <a class="btn btn-glow"
+            href="tel:+923459634701"
+            title="Call Sajjad">📞
+            Call
+            Sajjad</a>
+          <button
+            class="btn btn-outline"
+            type="button"
+            onclick="sendFormTo('+923459634701')"
+            title="WhatsApp Sajjad">💬
+            WhatsApp
+            Sajjad</button>
+
+          <!-- Basit buttons -->
+          <a class="btn btn-glow"
+            href="tel:+923105686088"
+            title="Call Basit">📞
+            Call
+            Basit</a>
+          <button
+            class="btn btn-outline"
+            type="button"
+            onclick="sendFormTo('+923105686088')"
+            title="WhatsApp Basit">💬
+            WhatsApp
+            Basit</button>
+        </div>
+
+        <div
+          class="hero-badges"
           aria-hidden="true">
           <div
-            style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.02); color:var(--muted)">
-            🎥 CCTV
-            & IP
+            class="badge">
+            🎥 IP
             Cameras
           </div>
           <div
-            style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.02); color:var(--muted)">
-            🌐 LAN &
-            WiFi
+            class="badge">
+            🌐
+            Networking
           </div>
           <div
-            style="padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.02); color:var(--muted)">
+            class="badge">
+            📶
+            Internet
+          </div>
+          <div
+            class="badge">
+            📞
+            Intercom
+          </div>
+          <div
+            class="badge">
             ⚡
             Cabling
-            & Wiring
+          </div>
+          <div
+            class="badge">
+            ❄️ AC
           </div>
         </div>
       </div>
+    </section>
 
-      <aside
-        class="quick-card reveal"
-        aria-label="Quick contact">
-        <h3>Quick
-          Quote</h3>
-        <p>Enter
-          your name
-          & phone —
-          we’ll
-          start a
-          WhatsApp
-          chat to
-          confirm
-          details.
-        </p>
+    <!-- marquee -->
+    <div
+      class="marquee-wrap">
+      <div
+        class="marquee reveal">
+        <div
+          class="marquee-inner">
+          <span
+            class="marq-item">IP
+            Cameras</span>
+          <span
+            class="marq-item">Networking</span>
+          <span
+            class="marq-item">Internet</span>
+          <span
+            class="marq-item">Intercom</span>
+          <span
+            class="marq-item">Electric
+            Cabling</span>
+          <span
+            class="marq-item">AC
+            Installation</span>
+          <span
+            class="marq-item">Maintenance
+            &
+            Upgrades</span>
+          <!-- repeat -->
+          <span
+            class="marq-item">IP
+            Cameras</span>
+          <span
+            class="marq-item">Networking</span>
+          <span
+            class="marq-item">Internet</span>
+          <span
+            class="marq-item">Intercom</span>
+          <span
+            class="marq-item">Electric
+            Cabling</span>
+          <span
+            class="marq-item">AC
+            Installation</span>
+          <span
+            class="marq-item">Maintenance
+            &
+            Upgrades</span>
+        </div>
+      </div>
+    </div>
 
-        <form
-          id="quickForm"
-          class="quick-row"
-          onsubmit="event.preventDefault(); quickSend();">
-          <input
-            type="text"
-            id="qName"
-            placeholder="Your name"
-            aria-label="Your name"
-            required />
-          <input
-            type="tel"
-            id="qPhone"
-            placeholder="Phone e.g. 03001234567"
-            aria-label="Phone"
-            required />
-          <div
-            style="display:flex; gap:10px; margin-top:6px">
-            <button
-              class="btn btn-primary"
-              type="submit"
-              style="flex:1">💬
-              WhatsApp</button>
-            <a class="btn btn-ghost"
-              href="tel:+923105686088"
-              style="flex:1; text-align:center">📞
-              Call</a>
-          </div>
-        </form>
-
-        <p
-          style="margin-top:12px;color:rgba(64, 228, 234, 0.6); font-size:13px">
-          Serving
+    <!-- about -->
+    <section
+      class="about reveal"
+      aria-label="About">
+      <div
+        class="about-left">
+        <h3>Who we
+          are</h3>
+        <p>We are
+          <strong>Basit
+            Ali</strong>
+          &amp;
+          <strong>Sajjad
+            Ali</strong>
+          — a
+          two-person
+          specialist
+          team
+          providing
+          professional
+          installation
+          &
+          maintenance
+          services
+          for CCTV,
+          networking,
+          internet
+          setup,
+          intercoms,
+          electrical
+          cabling
+          and AC
+          service.
+          We serve
           Islamabad
           &amp;
           Rawalpindi
-          • Licensed
-          &amp;
-          Insured
+          with clean
+          installations,
+          fast
+          quotes,
+          and
+          reliable
+          post-install
+          support.
         </p>
-      </aside>
+      </div>
+      <div
+        class="about-right"
+        aria-hidden="true">
+        <img
+          src="https://source.unsplash.com/800x600/?tools,technician"
+          alt="Technician tools image">
+      </div>
     </section>
 
-    <!-- SERVICES -->
+    <!-- services -->
     <section
       id="services"
-      class="services"
+      class="services reveal"
       aria-label="Services">
-      <h3
-        style="grid-column:1/-1; margin:0 0 8px 8px; font-size:18px; color:var(--neon1)">
-        Our Services
-      </h3>
-
+      <h2>Core
+        Services
+      </h2>
       <div
-        class="svc reveal"
-        data-delay="0">
+        class="grid">
         <div
-          class="icon">
-          🎥</div>
-        <div
-          class="text">
-          <h4>IP
-            Cameras
-            Installation
-          </h4>
-          <p>Design,
-            installation,
-            configuration
-            & remote
-            access.
-          </p>
+          class="service-card reveal"
+          data-delay="40">
+          <div
+            class="svc-icon">
+            🎥</div>
+          <div
+            class="svc-text">
+            <h3>IP
+              Cameras
+              Installation
+            </h3>
+            <p>
+              End-to-end
+              CCTV
+              design,
+              installation
+              &
+              remote
+              access
+              configuration.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div
-        class="svc reveal"
-        data-delay="80">
         <div
-          class="icon">
-          🌐</div>
-        <div
-          class="text">
-          <h4>
-            Networking
-            Setup
-          </h4>
-          <p>
-            LAN/WiFi
-            planning,
-            cabling,
-            switches
-            &
-            routing.
-          </p>
+          class="service-card reveal"
+          data-delay="90">
+          <div
+            class="svc-icon">
+            🌐</div>
+          <div
+            class="svc-text">
+            <h3>
+              Networking
+              Setup
+            </h3>
+            <p>
+              Structured
+              cabling,
+              switches,
+              routers
+              and
+              Wi-Fi
+              planning.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div
-        class="svc reveal"
-        data-delay="160">
         <div
-          class="icon">
-          📡</div>
-        <div
-          class="text">
-          <h4>
-            Internet
-            Configuration
-          </h4>
-          <p>ISP
-            modem/router
-            setup,
-            speed
-            tuning &
-            failover.
-          </p>
+          class="service-card reveal"
+          data-delay="140">
+          <div
+            class="svc-icon">
+            📶</div>
+          <div
+            class="svc-text">
+            <h3>
+              Internet
+              Configuration
+            </h3>
+            <p>ISP
+              modem/router
+              setup,
+              speed
+              tuning
+              and
+              redundancy
+              options.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div
-        class="svc reveal"
-        data-delay="240">
         <div
-          class="icon">
-          📞</div>
-        <div
-          class="text">
-          <h4>
-            Intercom
-            System
-            Setup
-          </h4>
-          <p>Wired &
-            wireless
-            intercoms
-            and door
-            entry
-            systems.
-          </p>
+          class="service-card reveal"
+          data-delay="190">
+          <div
+            class="svc-icon">
+            📞</div>
+          <div
+            class="svc-text">
+            <h3>
+              Intercom
+              System
+              Setup
+            </h3>
+            <p>Door
+              intercoms,
+              multi-unit
+              systems
+              &
+              integrations.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div
-        class="svc reveal"
-        data-delay="320">
         <div
-          class="icon">
-          ⚡</div>
-        <div
-          class="text">
-          <h4>
-            Electric
-            Cabling
-          </h4>
-          <p>Safe
-            wiring,
-            trunking
-            and
-            professional
-            finishing.
-          </p>
+          class="service-card reveal"
+          data-delay="240">
+          <div
+            class="svc-icon">
+            ⚡</div>
+          <div
+            class="svc-text">
+            <h3>
+              Electric
+              Cabling
+            </h3>
+            <p>Safe
+              wiring,
+              trunking
+              and
+              professional
+              tidy
+              finishes.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div
-        class="svc reveal"
-        data-delay="400">
         <div
-          class="icon">
-          ❄️</div>
-        <div
-          class="text">
-          <h4>AC
-            Installation
-            &
-            Service
-          </h4>
-          <p>
-            Mounting,
-            power
-            provisioning
-            &
-            maintenance.
-          </p>
+          class="service-card reveal"
+          data-delay="290">
+          <div
+            class="svc-icon">
+            ❄️</div>
+          <div
+            class="svc-text">
+            <h3>AC
+              Installation
+              &
+              Service
+            </h3>
+            <p>
+              Mounting,
+              power
+              provisioning
+              and
+              maintenance
+              services.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
+
+    <aside>
+        <div
+          style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)">
+          <h4
+            style="margin:0 0 8px 0;color:var(--neon2)">
+            Service
+            Area
+          </h4>
+          <p
+            style="margin:0 0 10px 0;color:var(--muted);font-size:13px">
+            Islamabad
+            &amp;
+            Rawalpindi
+            —
+            approximate
+            coverage.
+          </p>
+          <img
+            src="https://i.postimg.cc/9FdTYVm1/Screenshot-2025-10-26-002549.png"
+            alt="city"
+            style="width:150px;height: 150px;   border-radius:8px;margin-bottom:8px;object-fit:cover">
+          <p
+            style="margin:0;color:var(--muted);font-size:13px">
+            Or scan
+            the QR
+            on our
+            poster
+            to open
+            this
+            page
+            instantly.
+          </p>
+        </div>
+      </aside>
+
+    <!-- contact -->
     <section
       id="contact"
-      class="contact-section reveal"
+      class="contact reveal"
       aria-label="Contact">
       <div>
         <h3
@@ -902,24 +1048,30 @@
           Quote</h3>
         <p
           style="color:var(--muted)">
-          Fill all
-          fields and
-          tap
-          WhatsApp —
-          we reply
-          quickly to
-          arrange
-          site visit
-          or
-          estimate.
+          Fill in
+          your
+          details
+          then
+          choose
+          which
+          person to
+          send the
+          request to
+          (Sajjad or
+          Basit).
+          We'll open
+          WhatsApp
+          with the
+          prefilled
+          message.
         </p>
 
         <form
           id="mainForm"
-          class="contact-form"
-          onsubmit="event.preventDefault(); sendWhatsApp();">
+          onsubmit="event.preventDefault(); submitForm();"
+          style="margin-top:12px">
           <div
-            class="form-row">
+            class="form-grid">
             <div>
               <label
                 for="name">Full
@@ -936,8 +1088,9 @@
               <input
                 id="phone"
                 type="tel"
-                placeholder="e.g. 03001234567"
-                required>
+                placeholder="03001234567"
+                required
+                pattern="[0-9+ ]{7,20}">
             </div>
           </div>
 
@@ -1010,164 +1163,180 @@
               details</label>
             <textarea
               id="message"
-              placeholder="Any preferences, floors to cover, approximate area, best time to visit..."></textarea>
+              placeholder="Any preferences, floors to cover, best time to visit..."></textarea>
           </div>
 
           <div
-            class="submit-row">
+            class="submit-row"
+            style="margin-top:12px">
+            <!-- Two WhatsApp buttons -->
             <button
-              class="wa-btn pulse"
-              type="submit">💬
-              Send
-              on
-              WhatsApp</button>
-            <a class="btn btn-ghost"
+              type="button"
+              class="wa-btn"
+              onclick="sendFormTo('+923459634701')">💬
+              Chat
+              Sajjad</button>
+            <button
+              type="button"
+              class="wa-btn"
+              onclick="sendFormTo('+923105686088')">💬
+             Chat
+              Basit</button>
+
+            <!-- Two call buttons -->
+            <a class="call-btn"
+              style="text-decoration:none;margin-left:6px"
+              href="tel:+923459634701">📞
+              Call
+              Sajjad</a>
+            <a class="call-btn"
+              style="text-decoration:none;margin-left:6px"
               href="tel:+923105686088">📞
               Call
-              Now</a>
+              Basit</a>
+
             <div
-              style="margin-left:auto; color:var(--muted); font-size:13px">
+              style="margin-left:auto;color:var(--muted);font-size:13px">
               Serving
               Islamabad
               &amp;
               Rawalpindi
             </div>
           </div>
+
+          <div
+            id="success"
+            style="display:none;margin-top:12px;padding:10px;border-radius:8px;background:linear-gradient(90deg, rgba(0,255,191,0.06), rgba(0,194,255,0.03));color:#001820;font-weight:700">
+            Opening
+            WhatsApp...
+          </div>
         </form>
       </div>
 
-      <aside
-        style="padding:18px">
-        <div
-          style="background:var(--glass); padding:14px; border-radius:12px; border:1px solid rgba(255,255,255,0.02)">
-          <h4
-            style="margin:0 0 8px 0">
-            Service
-            Area
-          </h4>
-          <p
-            style="margin:0 0 10px 0;color:var(--muted);font-size:13px">
-            Islamabad
-            &amp;
-            Rawalpindi
-            —
-            approximate
-            coverage
-            area.
-          </p>
-          <div
-            class="map">
-            <iframe
-              src="https://www.google.com/maps?q=Islamabad,%20Rawalpindi&output=embed"
-              width="100%"
-              height="260"
-              style="border:0"
-              loading="lazy"></iframe>
-          </div>
-          <p
-            class="qr-note">
-            Have our
-            poster?
-            Scan the
-            QR to
-            open
-            this
-            page
-            instantly.
-          </p>
-        </div>
-      </aside>
+      
     </section>
 
-    <footer>
+    <!-- map at end -->
+    <div id="map"
+      class="map-wrap reveal"
+      aria-label="Map">
+      <h3
+        style="margin:10px 0;color:var(--neon1)">
+        Service Area
+        Map</h3>
+      <iframe
+        src="https://www.google.com/maps?q=Islamabad,%20Rawalpindi&output=embed"
+        loading="lazy"></iframe>
+    </div>
+
+    <footer
+      class="reveal">
       © 2025 S &amp;
       B Technical
-      Services — <a
-        href="tel:+923105686088"
-        style="color:var(--neon1); text-decoration:none">+923105686088</a>
+      Services —
+      Designed by
+      Basit Ali
+      &amp; Sajjad
+      Ali · <a
+        href="tel:+923459634701"
+        style="color:var(--neon1);text-decoration:none">+92
+        345
+        9634701</a>
     </footer>
-  </main>
+
+  </div>
 
   <script>
-    // Typing animation
+    /* ---------- Particles (floating) ---------- */
     (function () {
-      const phrases = ["Smart Home & Office Installation Experts", "Neat Installs • Fast Quotes • Reliable Support"];
-      const el = document.getElementById('typed-target');
-      let pi = 0, forward = true, charIndex = 0;
-      function tick() {
-        const txt = phrases[pi];
-        if (forward) {
-          charIndex++;
-          if (charIndex > txt.length) { forward = false; setTimeout(tick, 1000); return; }
-        } else {
-          charIndex--;
-          if (charIndex === 0) { forward = true; pi = (pi + 1) % phrases.length; setTimeout(tick, 400); return; }
+      const canvas = document.getElementById('particles');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w = canvas.width = innerWidth;
+      let h = canvas.height = innerHeight;
+      let particles = [];
+      function rand(min, max) { return Math.random() * (max - min) + min; }
+      function init() {
+        particles = [];
+        const count = Math.min(160, Math.floor((w * h) / 70000));
+        for (let i = 0; i < count; i++) {
+          particles.push({ x: rand(0, w), y: rand(0, h), r: rand(0.6, 3.2), vx: rand(-0.25, 0.25), vy: rand(0.02, 0.12), alpha: rand(0.03, 0.26) });
         }
-        el.textContent = txt.slice(0, charIndex);
-        setTimeout(tick, 80 + Math.random() * 40);
       }
-      tick();
+      function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; init(); }
+      window.addEventListener('resize', resize);
+      init();
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const p of particles) {
+          p.x += p.vx; p.y -= p.vy;
+          if (p.x < -20) p.x = w + 20;
+          if (p.x > w + 20) p.x = -20;
+          if (p.y < -30) p.y = h + 30;
+          if (p.y > h + 30) p.y = -30;
+          ctx.beginPath();
+          ctx.fillStyle = 'rgba(0,200,255,' + p.alpha + ')';
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
     })();
 
-    // Reveal elements on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(ent => {
-        if (ent.isIntersecting) {
-          ent.target.classList.add('show');
-          io.unobserve(ent.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach((r, i) => { r.style.transitionDelay = (r.dataset.delay || 0) + 'ms'; io.observe(r); });
+    /* ---------- typing animation ---------- */
+    (function () {
+      const el = document.getElementById('typed');
+      const phrases = ["Smart Home & Office Installation Experts", "Neat Installs • Fast Quotes • Reliable Support"];
+      let pi = 0, idx = 0, forward = true;
+      function step() {
+        const txt = phrases[pi];
+        if (forward) { idx++; if (idx > txt.length) { forward = false; setTimeout(step, 900); return; } }
+        else { idx--; if (idx === 0) { forward = true; pi = (pi + 1) % phrases.length; setTimeout(step, 350); return; } }
+        el.textContent = txt.slice(0, idx);
+        setTimeout(step, 70 + Math.random() * 40);
+      }
+      step();
+    })();
 
-    // Active nav highlight
-    const navLinks = document.querySelectorAll('nav .nav-link');
-    const sections = [
-      { id: 'top', el: document.getElementById('top') },
-      { id: 'services', el: document.getElementById('services') },
-      { id: 'contact', el: document.getElementById('contact') }
-    ];
-    function updateActive() {
-      const mid = window.scrollY + window.innerHeight / 3;
-      let activeIndex = 0;
-      sections.forEach((s, i) => {
-        if (s.el && s.el.offsetTop <= mid) activeIndex = i;
-      });
-      navLinks.forEach(link => link.classList.remove('active'));
-      if (navLinks[activeIndex]) navLinks[activeIndex].classList.add('active');
-    }
-    window.addEventListener('scroll', updateActive);
-    window.addEventListener('load', updateActive);
+    /* ---------- reveal on scroll ---------- */
+    (function () {
+      const items = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(it => io.observe(it));
+    })();
 
-    // Smooth internal links
+    /* ---------- smooth scroll for nav ---------- */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href.length > 1) {
-          e.preventDefault();
-          const el = document.querySelector(href);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        if (href.length > 1) { e.preventDefault(); const el = document.querySelector(href); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
-    // Quick form
-    function quickSend() {
-      const n = document.getElementById('qName').value.trim();
-      const p = document.getElementById('qPhone').value.trim();
-      if (!n || !p) { alert('Please enter name and phone'); return; }
-      const text = ['New Quick Request:', 'Name: ' + n, 'Phone: ' + p, 'From: S & B Technical Services (website)'].join('\n');
-      window.open('https://wa.me/923105686088?text=' + encodeURIComponent(text), '_blank');
+    /* ---------- form -> WhatsApp (two recipients) ---------- */
+    // numbers must be in international format without + for wa.me but handler accepts + as well
+    function normalizeNumber(num) {
+      // remove spaces and leading plus for wa.me usage
+      return num.replace(/\s+/g, '').replace(/^\+/, '');
     }
 
-    // Main form send
-    function sendWhatsApp() {
+    function gatherForm() {
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const address = document.getElementById('address').value.trim();
       const service = document.getElementById('service').value.trim();
       const message = document.getElementById('message').value.trim();
+      return { name, phone, address, service, message };
+    }
+
+    function sendFormTo(recipientNumber) {
+      // recipientNumber like '+923459634701' or '+923105686088'
+      const { name, phone, address, service, message } = gatherForm();
       if (!name || !phone || !address || !service) { alert('Please fill Name, Phone, Address and choose a Service.'); return; }
       const lines = [
         'New Customer Inquiry:',
@@ -1179,11 +1348,21 @@
         '',
         '— From: S & B Technical Services (website)'
       ];
-      window.open('https://wa.me/923105686088?text=' + encodeURIComponent(lines.join('\n')), '_blank');
+      const text = encodeURIComponent(lines.join('\n'));
+      const normalized = normalizeNumber(recipientNumber);
+      // open WhatsApp
+      document.getElementById('success').style.display = 'block';
+      setTimeout(() => {
+        window.open('https://wa.me/' + normalized + '?text=' + text, '_blank');
+        document.getElementById('success').style.display = 'none';
+      }, 700);
     }
 
-    // Focus main for a11y
-    window.addEventListener('load', () => { document.querySelector('main').focus({ preventScroll: true }); });
+    function submitForm() { submitForm(); } // placeholder if needed
+
+    /* ---------- quick send (used earlier on hero) ---------- */
+    // hero buttons already call sendFormTo with recipient numbers
+
   </script>
 </body>
 
