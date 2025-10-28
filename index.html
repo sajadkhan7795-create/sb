@@ -1,1369 +1,582 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta
-    charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width,initial-scale=1" />
-  <title>TwinTech —
-    S &amp; B
-    Technical
-    Services (Basit
-    &amp; Sajjad)
-  </title>
-  <meta
-    name="description"
-    content="S & B Technical Services — CCTV, Networking, Internet, Intercom, Electric Cabling. By Basit Ali & Sajjad Ali. Serving Islamabad & Rawalpindi." />
-  <meta
-    name="theme-color"
-    content="#041027" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
-    rel="stylesheet">
-  <style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S & B Technical Services — Basit & Sajjad</title>
+  <meta name="description" content="S & B Technical Services by Basit Ali & Sajjad Ali — CCTV, Networking, Internet, Intercom, Electric Cabling. Serving Islamabad & Rawalpindi." />
+  <meta name="theme-color" content="#00FFC0" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    // Tailwind Configuration to define custom colors for the new dark/neon theme
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-base': '#121212',      // Deep background
+            'dark-card': '#1e1e1e',      // Card background
+            'neon-teal': '#00FFC0',      // Primary accent/glow color
+            'neon-cyan': '#00C0FF',      // Secondary accent/gradient color
+            'muted-light': '#B0BEC5',    // Muted light text
+            'main-light-text': '#FAFAFA',// Main text
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'xl': '0.75rem',
+            '2xl': '1rem',
+            '3xl': '1.5rem',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/css">
+    /* Custom properties for consistency */
     :root {
-      --bg-0: #030618;
-      --bg-1: #05132a;
-      --muted: #9fb0c7;
-      --neon1: #00ffd0;
-      --neon2: #00c2ff;
-      --accent: linear-gradient(90deg, var(--neon1), var(--neon2));
-      --glass: rgba(255, 255, 255, 0.03);
-      --card-radius: 14px;
-      --maxw: 1150px;
-      --ease: cubic-bezier(.2, .95, .2, 1);
+        --dark-base: #121212;
+        --dark-card: #1e1e1e;
+        --neon-teal: #00FFC0;
+        --neon-cyan: #00C0FF;
     }
 
-    * {
-      box-sizing: border-box
+    /* Base body background for the deep dark theme */
+    .bg-dark-base-page {
+        background-color: var(--dark-base);
+        color: #FAFAFA; /* Default text color */
     }
 
-    html,
-    body {
-      height: 100%
+    /* Custom utility classes for card glow and background */
+    .bg-neon-card {
+        background-color: var(--dark-card);
+        box-shadow: 0 0 15px rgba(0, 255, 192, 0.15), 0 0 30px rgba(0, 255, 192, 0.05); /* Subtle neon glow */
+        border: 1px solid rgba(0, 255, 192, 0.2);
     }
-
     
-      body {
-    margin: 0;
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-    color: #e8fbff;
-    background: radial-gradient(900px 360px at 10% 8%, rgba(0, 194, 255, 0.03), transparent 8%), linear-gradient(180deg, var(--bg-0), #030618);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-
+    .bg-gradient-logo {
+        background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
+        color: #121212; /* Dark text on bright logo */
+    }
+    
+    .text-neon-gradient {
+        background: linear-gradient(90deg, var(--neon-teal), var(--neon-cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    /* ENHANCED GLOW ON HOVER */
+    .btn-shadow-hover:hover {
+        box-shadow: 0 8px 32px rgba(0, 255, 192, 0.5), 0 0 10px var(--neon-teal); /* Stronger glow */
+        transform: translateY(-3px);
     }
 
-    /* particles canvas */
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+    /* Transition timing */
+    .ease-out-expo {
+        transition-timing-function: cubic-bezier(.2,.9,.3,1);
+    }
+    
+    /* Scroll Reveal Styling */
+    .reveal { opacity: 0; transform: translateY(15px); transition: all .7s cubic-bezier(.2,.9,.3,1); }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    /* Fix for smooth scroll and border-right for typing animation */
+    html { scroll-behavior: smooth; }
+    /* Adjusted border color for typing in dark mode */
+    .typing { border-right: 2px solid rgba(255, 255, 255, 0.5); padding-right: 6px; }
+
+    /* Custom active state for nav link for better visual feedback */
+    .nav-link.active {
+        background-color: rgba(0, 255, 192, 0.1);
+        color: var(--neon-teal) !important;
     }
 
-    /* wrapper */
-    .wrap {
-      position: relative;
-      z-index: 10;
-      max-width: var(--maxw);
-      margin: 28px auto;
-      padding: 0 20px;
+    /* Marquee animation - sped up for more urgency */
+    @keyframes marq{ 0%{ transform:translateX(0) } 100%{ transform:translateX(-50%) } }
+    .marq-inner{ display:inline-block; white-space:nowrap; animation:marq 12s linear infinite; color: var(--dark-base); }
+    
+    /* STICKY HEADER */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50; /* Ensure it stays above content */
     }
 
-    /* navbar */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 12px 16px;
-      margin-bottom: 16px;
-      border-radius: 12px;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
-      position: sticky;
-      top: 12px;
-      z-index: 60;
+    /* 3D TILT EFFECT CSS */
+    .tilt-wrapper {
+        perspective: 1000px; /* Establishes the 3D space */
+        z-index: 10;
+        transform-style: preserve-3d;
     }
-
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
+    .tilt-card {
+        transition: transform 0.2s ease-out;
+        will-change: transform; /* Performance optimization */
+        transform-style: preserve-3d;
     }
-
-    .logo {
-      width: 100px;
-      height: 54px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: #001820;
-      font-weight: 800;
-      font-size: 16px;
-      box-shadow: 0 12px 38px rgba(0, 194, 255, 0.08);
+    
+    /* Style for the service card, making it look like a distinct tile */
+    .service-tile {
+        background-color: var(--dark-base); /* Darker background than the main card */
+        border: 1px solid rgba(0, 255, 192, 0.1);
+        box-shadow: 0 0 5px rgba(0, 255, 192, 0.1);
     }
-
-    .brand h1 {
-      margin: 0;
-      font-size: 16px
-    }
-
-    .brand p {
-      margin: 0;
-      font-size: 12px;
-      color: var(--muted)
-    }
-
-    nav {
-      display: flex;
-      gap: 10px;
-      align-items: center
-    }
-
-    .nav-link {
-      color: var(--muted);
-      padding: 8px 10px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all .18s var(--ease);
-    }
-
-    .nav-link:hover {
-      color: var(--neon1);
-      transform: translateY(-3px)
-    }
-
-    .nav-cta {
-      display: flex;
-      gap: 8px;
-      align-items: center
-    }
-
-    /* hero */
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      text-align: center;
-      padding: 40px 28px;
-      border-radius: 18px;
-      background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
-      border: 1px solid var(--neon1);
-      box-shadow: 0 26px 90px rgba(0, 0, 0, 0.6);
-      overflow: hidden;
-    }
-
-    /* hero background image overlay (Unsplash) */
-    .hero:before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background-image: url("https://source.unsplash.com/1600x900/?security-camera,network");
-      background-size: cover;
-      background-position: center;
-      opacity: 0.06;
-      filter: blur(2px) saturate(120%);
-      transform: scale(1.04);
-      
-    }
-
-    .hero .inner {
-      position: relative;
-      z-index: 2;
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    .title-main {
-      font-size: 30px;
-      margin: 0;
-      line-height: 1.06;
-      font-weight: 800
-    }
-
-    .title-accent {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .byline {
-      margin: 6px 0 12px;
-      color: var(--muted)
-    }
-
-    .names {
-      display: inline-flex;
-      gap: 10px;
-      justify-content: center;
-      margin: 8px 0 6px;
-    }
-
-    .names .pill {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.01);
-      color: var(--neon2);
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.02)
-    }
-
-    .typed {
-      margin-top: 8px;
-      font-weight: 700;
-      color: var(--neon1);
-      min-height: 26px;
-      border-right: 2px solid rgba(255, 255, 255, 0.06);
-      padding-right: 6px;
-      white-space: nowrap
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 18px;
-      z-index: 2;
-    }
-
-    .btn {
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 800;
-      text-decoration: none;
-      border: 0;
-      cursor: pointer;
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      transition: transform .18s var(--ease), box-shadow .18s var(--ease);
-    }
-
-    .btn-glow {
-      background: var(--accent);
-      color: #001820;
-      box-shadow: 0 16px 60px rgba(0, 194, 255, 0.12)
-    }
-
-    .btn-outline {
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      color: var(--neon1);
-      border: 1px solid rgba(0, 255, 191, 0.04)
-    }
-
-    .hero-badges {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-top: 18px;
-      flex-wrap: wrap
-    }
-
-    .badge {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.01);
-      color: var(--muted);
-      font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.02)
-    }
-
-    /* marquee */
-    .marquee-wrap {
-      margin: 18px auto 6px;
-      max-width: var(--maxw);
-      padding: 6px 20px;
-    }
-
-    .marquee {
-      overflow: hidden;
-      border-radius: 10px;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
-      border: 1px solid rgba(255, 255, 255, 0.02)
-    }
-
-    .marquee-inner {
-      display: inline-block;
-      white-space: nowrap;
-      animation: marq 20s linear infinite;
-      color: var(--muted);
-      padding: 10px 18px;
-      font-weight: 700
-    }
-
-    .marq-item {
-      color: var(--neon2);
-      padding: 0 18px;
-      display: inline-block
-    }
-
-    @keyframes marq {
-      0% {
-        transform: translateX(0)
-      }
-
-      100% {
-        transform: translateX(-50%)
-      }
-    }
-
-    /* about */
-    .about {
-      max-width: var(--maxw);
-      margin: 18px auto;
-      padding: 20px;
-      border-radius: 12px;
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
-      border: 1px solid rgba(255, 255, 255, 0.03)
-    }
-
-    .about-left {
-      flex: 1
-    }
-
-    .about-right {
-      width: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      padding: 14px;
-      background: linear-gradient(90deg, rgba(0, 255, 191, 0.03), rgba(0, 194, 255, 0.02));
-      border: 1px solid rgba(255, 255, 255, 0.02)
-    }
-
-    .about img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-
-    /* services */
-    .services {
-      max-width: var(--maxw);
-      margin: 18px auto;
-      padding: 0 20px 26px;
-    }
-
-    .services h2 {
-      color: var(--neon1);
-      margin: 0 0 12px 6px
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      align-items: start
-    }
-
-    .service-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.00));
-      border-radius: 12px;
-      padding: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 12px 34px rgba(2, 8, 18, 0.6);
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      min-height: 140px;
-      transition: transform .28s var(--ease), box-shadow .28s var(--ease), border-color .28s var(--ease);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
-      border-color: rgba(0, 255, 191, 0.12)
-    }
-
-    .svc-icon {
-      width: 68px;
-      height: 68px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: #001820;
-      font-weight: 900;
-      font-size: 22px;
-      box-shadow: 0 12px 36px rgba(0, 194, 255, 0.08)
-    }
-
-    .svc-text h3 {
-      margin: 0;
-      color: var(--neon1);
-      font-size: 16px
-    }
-
-    .svc-text p {
-      margin: 6px 0 0 0;
-      color: var(--muted);
-      font-size: 13px
-    }
-
-    /* contact */
-    .contact {
-      max-width: var(--maxw);
-      margin: 22px auto;
-      padding: 22px;
-      border-radius: 12px;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 18px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
-      border: 1px solid var(--neon1)
-    }
-
-    label {
-      display: block;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 6px
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      border-radius: 10px;
-      background: rgba(2, 6, 12, 0.36);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      color: #e8fbff;
-      font-size: 14px
-    }
-
-    textarea {
-      min-height: 120px;
-      resize: vertical
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px
-    }
-
-    .submit-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      margin-top: 12px
-    }
-
-    .wa-btn {
-      background: linear-gradient(90deg, #25D366, #1DA851);
-      color: #001;
-      width: 180px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 800;
-      border: 0;
-      cursor: pointer;
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.12);
-      transition: transform .18s var(--ease)
-    }
-
-    .wa-btn:hover {
-      transform: translateY(-6px)
-    }
-
-    .call-btn {
-      background: linear-gradient(90deg, var(--neon1), var(--neon2));
-      color: #001;
-      width: 180px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      font-weight: 800;
-      border: 0;
-      cursor: pointer;
-      box-shadow: 0 8px 30px rgba(0, 194, 255, 0.12)
-    }
-
-    /* map at end */
-    .map-wrap {
-      max-width: var(--maxw);
-      margin: 22px auto;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.00), rgba(255, 255, 255, 0.01))
-    }
-
-    .map-wrap iframe {
-      width: 100%;
-      height: 360px;
-      border: 0;
-      border-radius: 10px
-    }
-
-    /* footer */
-    footer {
-      max-width: var(--maxw);
-      margin: 18px auto;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 12px 20px
-    }
-
-    /* reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: all .7s var(--ease)
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0)
-    }
-
-    /* responsive */
-    @media (max-width:980px) {
-      .grid {
-        grid-template-columns: repeat(2, 1fr)
-      }
-
-      .contact {
-        grid-template-columns: 1fr
-      }
-
-      .about {
-        flex-direction: column
-      }
-    }
-
-    @media (max-width:640px) {
-      .grid {
-        grid-template-columns: 1fr
-      }
-
-      header {
-        padding: 10px
-      }
-
-      .logo {
-        width: 46px;
-        height: 46px
-      }
-
-      .hero {
-        padding: 20px
-      }
-
-      .title-main {
-        font-size: 22px
-      }
+    .service-tile:hover {
+        box-shadow: 0 0 15px rgba(0, 255, 192, 0.3); /* Add glow on tile hover */
     }
   </style>
 </head>
+<body class="bg-dark-base-page min-h-screen font-sans text-main-light-text">
 
-<body>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-20 relative">
 
-  <!-- particles -->
-  <canvas
-    id="particles"
-    aria-hidden="true"></canvas>
-
-  <div class="wrap"
-    role="main">
-
-    <!-- NAV -->
-    <header
-      role="banner"
-      aria-label="Main navigation">
-      <a class="brand"
-        href="#top"
-        aria-label="Go to top">
-        <div
-          class="logo"
-          aria-hidden="true">
-          Twin-Tech</div>
+    <!-- NAV (NOW STICKY) -->
+    <header class="site-header reveal flex justify-between items-center p-3 rounded-xl bg-dark-card/80 backdrop-blur-md shadow-2xl shadow-neon-teal/10" role="banner">
+      <a class="flex gap-3 items-center text-main-light-text no-underline" href="#top">
+        <!-- Logo updated to match new gradient -->
+        <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-lg shadow-lg shadow-neon-teal/40" aria-hidden="true">S&amp;B</div>
         <div>
-          <h1>S
-            &amp; B
-            Technical
-            Services
-          </h1>
-          <p>By
-            Basit
-            Ali
-            &amp;
-            Sajjad
-            Ali —
-            Islamabad
-            &amp;
-            Rawalpindi
-          </p>
+          <h1 class="text-lg font-extrabold m-0 text-neon-teal">S &amp; B Technical Services</h1>
+          <p class="text-xs m-0 text-muted-light">By Basit Ali &amp; Sajjad Ali</p>
         </div>
       </a>
 
-      <nav
-        aria-label="Primary">
-        <a class="nav-link"
-          href="#top">Home</a>
-        <a class="nav-link"
-          href="#services">Services</a>
-        <a class="nav-link"
-          href="#contact">Contact</a>
-        <a class="nav-link"
-          href="#map">Map</a>
+      <nav class="primary hidden md:flex gap-1 items-center" aria-label="Main navigation">
+        <a class="nav-link text-main-light-text/90 no-underline px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-neon-teal/10 hover:text-neon-teal" href="#top">Home</a>
+        <a class="nav-link text-main-light-text/90 no-underline px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-neon-teal/10 hover:text-neon-teal" href="#about">About</a>
+        <a class="nav-link text-main-light-text/90 no-underline px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-neon-teal/10 hover:text-neon-teal" href="#services">Services</a>
+        <a class="nav-link text-main-light-text/90 no-underline px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-neon-teal/10 hover:text-neon-teal" href="#contact">Contact</a>
+        <a class="nav-link text-main-light-text/90 no-underline px-3 py-2 rounded-lg font-semibold transition duration-300 hover:bg-neon-teal/10 hover:text-neon-teal" href="#map">Map</a>
       </nav>
+
+      <button class="menu-btn md:hidden bg-transparent border-0 text-neon-teal text-2xl p-2 rounded-lg transition duration-300 hover:bg-neon-teal/10" id="menuBtn" aria-label="Open menu">☰</button>
     </header>
 
     <!-- HERO -->
-    <section
-      class="hero reveal"
-      id="top"
-      aria-label="Intro">
-      <div
-        class="inner">
-        <div
-          class="title-main">
-          TwinTech —
-          <span
-            class="title-accent">Smart
-            Installations</span>
-        </div>
-        <div
-          class="byline">
-          S &amp; B
-          Technical
-          Services
+    <section id="top" class="hero reveal mt-4 rounded-3xl overflow-hidden flex items-center justify-center min-h-[50vh] relative shadow-2xl shadow-neon-teal/10 bg-dark-card" aria-label="Hero">
+      <div class="hero-bg absolute inset-0 z-0 opacity-10 filter contrast-110 saturate-110 pointer-events-none bg-cover bg-center" aria-hidden="true"
+        style="background-image: url('https://images.unsplash.com/photo-1581092795364-9f5d8e3e6b70?auto=format&fit=crop&w=1600&q=80');">
+      </div>
+      <div class="relative z-20 text-center p-8 text-main-light-text max-w-4xl">
+        <h2 class="text-4xl sm:text-5xl font-extrabold m-0 leading-tight">S &amp; B Technical Services — <span class="text-neon-gradient">TwinTech</span></h2>
+        <p class="mt-2 text-base sm:text-lg text-muted-light font-semibold">Professional installations for Home &amp; Office in Islamabad &amp; Rawalpindi</p>
+
+        <div class="flex gap-3 justify-center mt-4 flex-wrap">
+          <div class="name-chip bg-dark-card text-neon-teal px-4 py-2 rounded-full font-bold shadow-md shadow-neon-teal/20 border border-neon-teal/30">Basit Ali</div>
+          <div class="name-chip bg-dark-card text-neon-teal px-4 py-2 rounded-full font-bold shadow-md shadow-neon-teal/20 border border-neon-teal/30">Sajjad Ali</div>
         </div>
 
-        <div
-          class="names">
-          <div
-            class="pill">
-            Basit
-            Ali
-          </div>
-          <div
-            class="pill">
-            Sajjad
-            Ali
-          </div>
-        </div>
+        <div id="typing" class="typing mt-3 text-lg font-bold text-neon-teal min-h-[28px] mx-auto w-fit" aria-live="polite"></div>
 
-        <div
-          id="typed"
-          class="typed"
-          aria-live="polite">
-        </div>
-
-        <div
-          class="hero-actions"
-          style="margin-top:18px;">
-          <!-- Sajjad buttons -->
-          <a class="btn btn-glow"
-            href="tel:+923459634701"
-            title="Call Sajjad">📞
-            Call
-            Sajjad</a>
-          <button
-            class="btn btn-outline"
-            type="button"
-            onclick="sendFormTo('+923459634701')"
-            title="WhatsApp Sajjad">💬
-            WhatsApp
-            Sajjad</button>
-
-          <!-- Basit buttons -->
-          <a class="btn btn-glow"
-            href="tel:+923105686088"
-            title="Call Basit">📞
-            Call
-            Basit</a>
-          <button
-            class="btn btn-outline"
-            type="button"
-            onclick="sendFormTo('+923105686088')"
-            title="WhatsApp Basit">💬
-            WhatsApp
-            Basit</button>
-        </div>
-
-        <div
-          class="hero-badges"
-          aria-hidden="true">
-          <div
-            class="badge">
-            🎥 IP
-            Cameras
-          </div>
-          <div
-            class="badge">
-            🌐
-            Networking
-          </div>
-          <div
-            class="badge">
-            📶
-            Internet
-          </div>
-          <div
-            class="badge">
-            📞
-            Intercom
-          </div>
-          <div
-            class="badge">
-            ⚡
-            Cabling
-          </div>
-          <div
-            class="badge">
-            ❄️ AC
-          </div>
+        <div class="flex gap-4 justify-center mt-5 flex-wrap" role="group">
+          <!-- Buttons updated for stronger glow -->
+          <a class="btn btn-primary bg-neon-teal text-dark-base px-5 py-3 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo btn-shadow-hover" href="tel:+923459634701" aria-label="Call Sajjad">📞 Call Sajjad</a>
+          <a class="btn btn-primary bg-neon-teal text-dark-base px-5 py-3 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo btn-shadow-hover" href="tel:+923105686088" aria-label="Call Basit">📞 Call Basit</a>
+          <a class="btn btn-outline border border-neon-teal/50 text-neon-teal px-5 py-3 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo hover:bg-neon-teal/10 hover:shadow-lg hover:shadow-neon-teal/40" href="https://wa.me/923459634701" aria-label="WhatsApp Sajjad">💬 Chat Sajjad</a>
+          <a class="btn btn-outline border border-neon-teal/50 text-neon-teal px-5 py-3 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo hover:bg-neon-teal/10 hover:shadow-lg hover:shadow-neon-teal/40" href="https://wa.me/923105686088" aria-label="WhatsApp Basit">💬 Chat Basit</a>
         </div>
       </div>
     </section>
 
-    <!-- marquee -->
-    <div
-      class="marquee-wrap">
-      <div
-        class="marquee reveal">
-        <div
-          class="marquee-inner">
-          <span
-            class="marq-item">IP
-            Cameras</span>
-          <span
-            class="marq-item">Networking</span>
-          <span
-            class="marq-item">Internet</span>
-          <span
-            class="marq-item">Intercom</span>
-          <span
-            class="marq-item">Electric
-            Cabling</span>
-          <span
-            class="marq-item">AC
-            Installation</span>
-          <span
-            class="marq-item">Maintenance
-            &
-            Upgrades</span>
-          <!-- repeat -->
-          <span
-            class="marq-item">IP
-            Cameras</span>
-          <span
-            class="marq-item">Networking</span>
-          <span
-            class="marq-item">Internet</span>
-          <span
-            class="marq-item">Intercom</span>
-          <span
-            class="marq-item">Electric
-            Cabling</span>
-          <span
-            class="marq-item">AC
-            Installation</span>
-          <span
-            class="marq-item">Maintenance
-            &
-            Upgrades</span>
-        </div>
+    <!-- MARQUEE -->
+    <div class="marquee reveal my-4 p-3 rounded-xl bg-neon-teal/50 shadow-inner shadow-neon-teal/20 overflow-hidden" aria-hidden="true">
+      <div class="marq-inner font-bold text-dark-base text-sm">
+        <span class="px-4 inline-block">IP Cameras</span>
+        <span class="px-4 inline-block">Networking</span>
+        <span class="px-4 inline-block">Internet</span>
+        <span class="px-4 inline-block">Intercom</span>
+        <span class="px-4 inline-block">Electric Cabling</span>
+        <span class="px-4 inline-block">AC Installation</span>
+        <span class="px-4 inline-block">Maintenance & Upgrades</span>
+        <!-- repeat for smooth loop -->
+        <span class="px-4 inline-block">IP Cameras</span>
+        <span class="px-4 inline-block">Networking</span>
+        <span class="px-4 inline-block">Internet</span>
+        <span class="px-4 inline-block">Intercom</span>
       </div>
     </div>
 
-    <!-- about -->
-    <section
-      class="about reveal"
-      aria-label="About">
-      <div
-        class="about-left">
-        <h3>Who we
-          are</h3>
-        <p>We are
-          <strong>Basit
-            Ali</strong>
-          &amp;
-          <strong>Sajjad
-            Ali</strong>
-          — a
-          two-person
-          specialist
-          team
-          providing
-          professional
-          installation
-          &
-          maintenance
-          services
-          for CCTV,
-          networking,
-          internet
-          setup,
-          intercoms,
-          electrical
-          cabling
-          and AC
-          service.
-          We serve
-          Islamabad
-          &amp;
-          Rawalpindi
-          with clean
-          installations,
-          fast
-          quotes,
-          and
-          reliable
-          post-install
-          support.
+    <!-- ABOUT -->
+    <section id="about" class="about reveal flex flex-col md:flex-row gap-4 my-4 items-center" aria-label="About">
+      <div class="card p-6 rounded-2xl bg-neon-card shadow-2xl shadow-neon-teal/10 flex-1">
+        <h3 class="text-2xl font-extrabold m-0 text-neon-teal">Who we are</h3>
+        <p class="text-muted-light mt-2 text-base leading-relaxed">
+          We are <strong>Basit Ali</strong> &amp; <strong>Sajjad Ali</strong> — a trusted two-person team providing professional installation & maintenance services for **CCTV/IP cameras, LAN & Wi-Fi networking, internet/router setup, intercom systems, electrical cabling** and **AC installation**. Serving Islamabad &amp; Rawalpindi with neat installs, fast quotes and ongoing support.
         </p>
       </div>
-      <div
-        class="about-right"
-        aria-hidden="true">
-        <img
-          src="https://source.unsplash.com/800x600/?tools,technician"
-          alt="Technician tools image">
+      <div class="about-right card rounded-2xl overflow-hidden w-full md:w-80 shadow-2xl shadow-neon-teal/10 bg-neon-card" aria-hidden="true">
+        <img class="w-full h-48 object-cover block opacity-70" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Technician tools">
       </div>
     </section>
 
-    <!-- services -->
-    <section
-      id="services"
-      class="services reveal"
-      aria-label="Services">
-      <h2>Core
-        Services
-      </h2>
-      <div
-        class="grid">
-        <div
-          class="service-card reveal"
-          data-delay="40">
-          <div
-            class="svc-icon">
-            🎥</div>
-          <div
-            class="svc-text">
-            <h3>IP
-              Cameras
-              Installation
-            </h3>
-            <p>
-              End-to-end
-              CCTV
-              design,
-              installation
-              &
-              remote
-              access
-              configuration.
-            </p>
-          </div>
-        </div>
+    <!-- SERVICES (INDIVIDUAL TILES ARE NOW INTERACTIVE) -->
+    <section id="services" class="services reveal my-8" aria-label="Services">
+      <div class="card p-6 rounded-2xl bg-neon-card shadow-2xl shadow-neon-teal/10">
+        <h2 class="text-3xl font-extrabold m-0 mb-6 text-neon-teal">Core Services</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        <div
-          class="service-card reveal"
-          data-delay="90">
-          <div
-            class="svc-icon">
-            🌐</div>
-          <div
-            class="svc-text">
-            <h3>
-              Networking
-              Setup
-            </h3>
-            <p>
-              Structured
-              cabling,
-              switches,
-              routers
-              and
-              Wi-Fi
-              planning.
-            </p>
+          <!-- Service 1: IP Cameras Installation -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">🎥</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">IP Cameras Installation</h3>
+                <p class="text-muted-light text-sm mt-1">Design, install, configure & remote access setup for maximum security.</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div
-          class="service-card reveal"
-          data-delay="140">
-          <div
-            class="svc-icon">
-            📶</div>
-          <div
-            class="svc-text">
-            <h3>
-              Internet
-              Configuration
-            </h3>
-            <p>ISP
-              modem/router
-              setup,
-              speed
-              tuning
-              and
-              redundancy
-              options.
-            </p>
+          <!-- Service 2: Networking Setup -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">🌐</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">Networking Setup</h3>
+                <p class="text-muted-light text-sm mt-1">Structured cabling, switches, routers & optimized Wi-Fi planning.</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div
-          class="service-card reveal"
-          data-delay="190">
-          <div
-            class="svc-icon">
-            📞</div>
-          <div
-            class="svc-text">
-            <h3>
-              Intercom
-              System
-              Setup
-            </h3>
-            <p>Door
-              intercoms,
-              multi-unit
-              systems
-              &
-              integrations.
-            </p>
+          <!-- Service 3: Internet Configuration -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">📶</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">Internet Configuration</h3>
+                <p class="text-muted-light text-sm mt-1">ISP modem/router setup, speed tuning & redundancy solutions.</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div
-          class="service-card reveal"
-          data-delay="240">
-          <div
-            class="svc-icon">
-            ⚡</div>
-          <div
-            class="svc-text">
-            <h3>
-              Electric
-              Cabling
-            </h3>
-            <p>Safe
-              wiring,
-              trunking
-              and
-              professional
-              tidy
-              finishes.
-            </p>
+          <!-- Service 4: Intercom System Setup -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">📞</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">Intercom System Setup</h3>
+                <p class="text-muted-light text-sm mt-1">Door entry systems, multi-unit intercoms & seamless integrations.</p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div
-          class="service-card reveal"
-          data-delay="290">
-          <div
-            class="svc-icon">
-            ❄️</div>
-          <div
-            class="svc-text">
-            <h3>AC
-              Installation
-              &
-              Service
-            </h3>
-            <p>
-              Mounting,
-              power
-              provisioning
-              and
-              maintenance
-              services.
-            </p>
+          <!-- Service 5: Electric Cabling -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">⚡</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">Electric Cabling</h3>
+                <p class="text-muted-light text-sm mt-1">Safe, certified wiring, neat trunking and professional finishing.</p>
+              </div>
+            </div>
           </div>
+
+          <!-- Service 6: AC Installation & Service -->
+          <div class="tilt-wrapper">
+            <div class="tilt-card service-tile flex gap-4 items-start p-4 rounded-xl transition duration-300 ease-out-expo glow-hover">
+              <div class="w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-logo font-black text-xl shadow-lg shadow-neon-teal/30 flex-shrink-0" aria-hidden="true">❄️</div>
+              <div>
+                <h3 class="text-lg font-bold m-0 text-main-light-text">AC Installation & Service</h3>
+                <p class="text-muted-light text-sm mt-1">Split unit mounting, reliable power provisioning & routine maintenance.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
+    <!-- CONTACT -->
+    <section id="contact" class="contact reveal grid grid-cols-1 lg:grid-cols-3 gap-6 my-8 items-start" aria-label="Contact">
+      <div class="card p-6 rounded-2xl bg-neon-card shadow-2xl shadow-neon-teal/10 col-span-1 lg:col-span-2">
+        <h3 class="text-2xl font-extrabold m-0 text-neon-teal">Get a Free Quote</h3>
+        <p class="text-muted-light mt-2 mb-4 text-base">Fill your details and choose who to chat with — Sajjad or Basit. We'll open WhatsApp with your filled message.</p>
 
-    <aside>
-        <div
-          style="padding:12px;border-radius:12px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)">
-          <h4
-            style="margin:0 0 8px 0;color:var(--neon2)">
-            Service
-            Area
-          </h4>
-          <p
-            style="margin:0 0 10px 0;color:var(--muted);font-size:13px">
-            Islamabad
-            &amp;
-            Rawalpindi
-            —
-            approximate
-            coverage.
-          </p>
-          <img
-            src="https://i.postimg.cc/9FdTYVm1/Screenshot-2025-10-26-002549.png"
-            alt="city"
-            style="width:150px;height: 150px;   border-radius:8px;margin-bottom:8px;object-fit:cover">
-          <p
-            style="margin:0;color:var(--muted);font-size:13px">
-            Or scan
-            the QR
-            on our
-            poster
-            to open
-            this
-            page
-            instantly.
-          </p>
-        </div>
-      </aside>
-
-    <!-- contact -->
-    <section
-      id="contact"
-      class="contact reveal"
-      aria-label="Contact">
-      <div>
-        <h3
-          style="margin-top:0;color:var(--neon1)">
-          Get a Free
-          Quote</h3>
-        <p
-          style="color:var(--muted)">
-          Fill in
-          your
-          details
-          then
-          choose
-          which
-          person to
-          send the
-          request to
-          (Sajjad or
-          Basit).
-          We'll open
-          WhatsApp
-          with the
-          prefilled
-          message.
-        </p>
-
-        <form
-          id="mainForm"
-          onsubmit="event.preventDefault(); submitForm();"
-          style="margin-top:12px">
-          <div
-            class="form-grid">
+        <form id="mainForm" onsubmit="event.preventDefault();">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label
-                for="name">Full
-                name</label>
-              <input
-                id="name"
-                type="text"
-                placeholder="e.g. Ali Khan"
-                required>
+              <label for="name" class="block text-sm font-medium mb-1 text-main-light-text">Full name</label>
+              <input id="name" name="name" type="text" class="w-full p-3 rounded-lg border border-neon-teal/30 bg-dark-base focus:ring-neon-teal focus:border-neon-teal transition text-main-light-text" placeholder="e.g. Ali Khan" required>
             </div>
             <div>
-              <label
-                for="phone">Phone</label>
-              <input
-                id="phone"
-                type="tel"
-                placeholder="03001234567"
-                required
-                pattern="[0-9+ ]{7,20}">
+              <label for="phone" class="block text-sm font-medium mb-1 text-main-light-text">Phone</label>
+              <input id="phone" name="phone" type="tel" class="w-full p-3 rounded-lg border border-neon-teal/30 bg-dark-base focus:ring-neon-teal focus:border-neon-teal transition text-main-light-text" placeholder="03001234567" required>
             </div>
           </div>
 
-          <div
-            style="margin-top:12px">
-            <label
-              for="address">Customer
-              Address</label>
-            <input
-              id="address"
-              type="text"
-              placeholder="House #, Street, Area, City"
-              required>
+          <div class="mt-4">
+            <label for="address" class="block text-sm font-medium mb-1 text-main-light-text">Customer Address</label>
+            <input id="address" name="address" type="text" class="w-full p-3 rounded-lg border border-neon-teal/30 bg-dark-base focus:ring-neon-teal focus:border-neon-teal transition text-main-light-text" placeholder="House #, Street, Area, City" required>
           </div>
 
-          <div
-            style="margin-top:12px">
-            <label
-              for="service">Select
-              service</label>
-            <select
-              id="service"
-              required>
-              <option
-                value="">
-                --
-                Choose
-                a
-                Service
-                --
-              </option>
-              <option>
-                IP
-                Cameras
-                Installation
-              </option>
-              <option>
-                Networking
-                Setup
-              </option>
-              <option>
-                Internet
-                Configuration
-              </option>
-              <option>
-                Intercom
-                System
-                Setup
-              </option>
-              <option>
-                Electric
-                Cabling
-              </option>
-              <option>
-                AC
-                Installation
-                &
-                Service
-              </option>
-              <option>
-                Other
-              </option>
+          <div class="mt-4">
+            <label for="service" class="block text-sm font-medium mb-1 text-main-light-text">Select service</label>
+            <select id="service" name="service" class="w-full p-3 rounded-lg border border-neon-teal/30 bg-dark-base focus:ring-neon-teal focus:border-neon-teal transition text-main-light-text" required>
+              <option value="" class="bg-dark-base text-muted-light">-- Choose a Service --</option>
+              <option class="bg-dark-card text-main-light-text">IP Cameras Installation</option>
+              <option class="bg-dark-card text-main-light-text">Networking Setup</option>
+              <option class="bg-dark-card text-main-light-text">Internet Configuration</option>
+              <option class="bg-dark-card text-main-light-text">Intercom System Setup</option>
+              <option class="bg-dark-card text-main-light-text">Electric Cabling</option>
+              <option class="bg-dark-card text-main-light-text">AC Installation & Service</option>
+              <option class="bg-dark-card text-main-light-text">Other</option>
             </select>
           </div>
 
-          <div
-            style="margin-top:12px">
-            <label
-              for="message">Additional
-              details</label>
-            <textarea
-              id="message"
-              placeholder="Any preferences, floors to cover, best time to visit..."></textarea>
+          <div class="mt-4">
+            <label for="message" class="block text-sm font-medium mb-1 text-main-light-text">Additional details</label>
+            <textarea id="message" name="message" class="w-full p-3 rounded-lg border border-neon-teal/30 bg-dark-base focus:ring-neon-teal focus:border-neon-teal transition min-h-[120px] resize-y text-main-light-text" placeholder="Any preferences, floors to cover, best time to visit..."></textarea>
           </div>
 
-          <div
-            class="submit-row"
-            style="margin-top:12px">
-            <!-- Two WhatsApp buttons -->
-            <button
-              type="button"
-              class="wa-btn"
-              onclick="sendFormTo('+923459634701')">💬
-              Chat
-              Sajjad</button>
-            <button
-              type="button"
-              class="wa-btn"
-              onclick="sendFormTo('+923105686088')">💬
-             Chat
-              Basit</button>
+          <div class="mt-6 flex flex-wrap gap-3 items-center">
+            <!-- Buttons updated for stronger glow -->
+            <button type="button" class="bg-green-500 text-dark-base px-4 py-2 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo hover:bg-green-400 shadow-md shadow-green-500/50" onclick="sendTo('+923459634701')">💬 Chat Sajjad</button>
+            <button type="button" class="bg-green-500 text-dark-base px-4 py-2 rounded-xl font-extrabold flex items-center gap-2 transition ease-out-expo hover:bg-green-400 shadow-md shadow-green-500/50" onclick="sendTo('+923105686088')">💬 Chat Basit</button>
 
-            <!-- Two call buttons -->
-            <a class="call-btn"
-              style="text-decoration:none;margin-left:6px"
-              href="tel:+923459634701">📞
-              Call
-              Sajjad</a>
-            <a class="call-btn"
-              style="text-decoration:none;margin-left:6px"
-              href="tel:+923105686088">📞
-              Call
-              Basit</a>
+            <a class="bg-gradient-logo px-4 py-2 rounded-xl font-extrabold text-dark-base flex items-center gap-2 transition ease-out-expo hover:brightness-110 shadow-md shadow-neon-teal/50 no-underline" href="tel:+923459634701">📞 Call Sajjad</a>
+            <a class="bg-gradient-logo px-4 py-2 rounded-xl font-extrabold text-dark-base flex items-center gap-2 transition ease-out-expo hover:brightness-110 shadow-md shadow-neon-teal/50 no-underline" href="tel:+923105686088">📞 Call Basit</a>
 
-            <div
-              style="margin-left:auto;color:var(--muted);font-size:13px">
-              Serving
-              Islamabad
-              &amp;
-              Rawalpindi
-            </div>
+            <div class="ml-auto text-muted-light text-sm hidden sm:block">Serving Islamabad &amp; Rawalpindi</div>
           </div>
 
-          <div
-            id="success"
-            style="display:none;margin-top:12px;padding:10px;border-radius:8px;background:linear-gradient(90deg, rgba(0,255,191,0.06), rgba(0,194,255,0.03));color:#001820;font-weight:700">
-            Opening
-            WhatsApp...
-          </div>
+          <!-- Notification/Message Box -->
+          <div id="notify" class="hidden mt-4 p-3 rounded-lg bg-red-800/20 text-red-400 font-semibold border border-red-800" role="alert"></div>
         </form>
       </div>
 
-      
+      <aside class="card p-4 rounded-2xl bg-neon-card shadow-2xl shadow-neon-teal/10 lg:col-span-1">
+        <img class="w-full h-40 object-cover rounded-xl opacity-70" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80" alt="On-site survey">
+        <div class="font-extrabold text-lg text-neon-teal mt-3">On-site visits &amp; free estimates</div>
+        <div class="text-muted-light text-sm mt-1">We do site surveys and provide fast quotations for the Twin Cities (Islamabad &amp; Rawalpindi).</div>
+      </aside>
     </section>
 
-    <!-- map at end -->
-    <div id="map"
-      class="map-wrap reveal"
-      aria-label="Map">
-      <h3
-        style="margin:10px 0;color:var(--neon1)">
-        Service Area
-        Map</h3>
-      <iframe
-        src="https://www.google.com/maps?q=Islamabad,%20Rawalpindi&output=embed"
-        loading="lazy"></iframe>
-    </div>
+    <!-- MAP -->
+    <section id="map" class="map reveal my-8 card p-4 rounded-2xl bg-neon-card shadow-2xl shadow-neon-teal/10" aria-label="Service Area Map">
+      <h3 class="text-2xl font-extrabold m-0 mb-3 text-neon-teal">Service Area Map</h3>
+      <iframe src="https://www.google.com/maps?q=Islamabad,%20Rawalpindi&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-[420px] sm:h-[300px] rounded-xl border border-neon-teal/30"></iframe>
+      <p class="text-muted-light text-sm mt-3">Approximate coverage: Islamabad &amp; Rawalpindi.</p>
+    </section>
 
-    <footer
-      class="reveal">
-      © 2025 S &amp;
-      B Technical
-      Services —
-      Designed by
-      Basit Ali
-      &amp; Sajjad
-      Ali · <a
-        href="tel:+923459634701"
-        style="color:var(--neon1);text-decoration:none">+92
-        345
-        9634701</a>
+    <footer class="reveal mt-8 pb-4">
+      <div class="text-muted-light text-sm text-center">© 2025 S &amp; B Technical Services — Designed by Basit Ali &amp; Sajjad Ali · <a href="tel:+923459634701" class="text-neon-teal no-underline font-semibold hover:underline">+92 345 9634701</a></div>
     </footer>
+  </div>
 
+  <!-- Mobile Fixed Action Bar (Hidden on Desktop) -->
+  <div class="md:hidden fixed bottom-3 left-3 right-3 z-50 flex gap-2 p-3 rounded-xl bg-dark-card shadow-2xl shadow-neon-teal/20" id="mobileBar" aria-hidden="true">
+    <a class="w-1/2 bg-green-500 text-dark-base px-3 py-2 rounded-xl font-extrabold text-center no-underline transition hover:bg-green-400" href="https://wa.me/923459634701">💬 Sajjad</a>
+    <a class="w-1/2 bg-green-500 text-dark-base px-3 py-2 rounded-xl font-extrabold text-center no-underline transition hover:bg-green-400" href="https://wa.me/923105686088">💬 Basit</a>
   </div>
 
   <script>
-    /* ---------- Particles (floating) ---------- */
-    (function () {
-      const canvas = document.getElementById('particles');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w = canvas.width = innerWidth;
-      let h = canvas.height = innerHeight;
-      let particles = [];
-      function rand(min, max) { return Math.random() * (max - min) + min; }
-      function init() {
-        particles = [];
-        const count = Math.min(160, Math.floor((w * h) / 70000));
-        for (let i = 0; i < count; i++) {
-          particles.push({ x: rand(0, w), y: rand(0, h), r: rand(0.6, 3.2), vx: rand(-0.25, 0.25), vy: rand(0.02, 0.12), alpha: rand(0.03, 0.26) });
+    // Global function to show a custom notification instead of alert()
+    function showNotification(message, isError = true) {
+        const notifyEl = document.getElementById('notify');
+        if (!notifyEl) return;
+        
+        notifyEl.textContent = message;
+        notifyEl.classList.remove('hidden', 'bg-red-800/20', 'text-red-400', 'border-red-800', 'bg-neon-teal/20', 'text-neon-teal', 'border-neon-teal');
+        
+        if (isError) {
+            notifyEl.classList.add('bg-red-800/20', 'text-red-400', 'border-red-800');
+        } else {
+            notifyEl.classList.add('bg-neon-teal/20', 'text-neon-teal', 'border-neon-teal');
         }
-      }
-      function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; init(); }
-      window.addEventListener('resize', resize);
-      init();
-      function draw() {
-        ctx.clearRect(0, 0, w, h);
-        for (const p of particles) {
-          p.x += p.vx; p.y -= p.vy;
-          if (p.x < -20) p.x = w + 20;
-          if (p.x > w + 20) p.x = -20;
-          if (p.y < -30) p.y = h + 30;
-          if (p.y > h + 30) p.y = -30;
-          ctx.beginPath();
-          ctx.fillStyle = 'rgba(0,200,255,' + p.alpha + ')';
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
 
-    /* ---------- typing animation ---------- */
-    (function () {
-      const el = document.getElementById('typed');
-      const phrases = ["Smart Home & Office Installation Experts", "Neat Installs • Fast Quotes • Reliable Support"];
-      let pi = 0, idx = 0, forward = true;
-      function step() {
+        // Hide after 5 seconds
+        setTimeout(() => {
+            notifyEl.classList.add('hidden');
+        }, 5000);
+    }
+
+    // Typing animation for tagline
+    (function(){
+      const el = document.getElementById('typing');
+      const phrases = ["Smart Home & Office Installation Experts","Neat Installs · Fast Quotes · Reliable Support"];
+      if(!el) return;
+      let pi=0, idx=0, forward=true;
+      function tick(){
         const txt = phrases[pi];
-        if (forward) { idx++; if (idx > txt.length) { forward = false; setTimeout(step, 900); return; } }
-        else { idx--; if (idx === 0) { forward = true; pi = (pi + 1) % phrases.length; setTimeout(step, 350); return; } }
-        el.textContent = txt.slice(0, idx);
-        setTimeout(step, 70 + Math.random() * 40);
+        if(forward){ idx++; if(idx>txt.length){ forward=false; setTimeout(tick,1200); return; } }
+        else { idx--; if(idx===0){ forward=true; pi=(pi+1)%phrases.length; setTimeout(tick,500); return; } }
+        el.textContent = txt.slice(0,idx);
+        setTimeout(tick, 70 + Math.random()*40);
       }
-      step();
+      tick();
     })();
 
-    /* ---------- reveal on scroll ---------- */
-    (function () {
+    // Reveal on scroll
+    (function(){
       const items = document.querySelectorAll('.reveal');
-      const io = new IntersectionObserver((entries) => {
+      const io = new IntersectionObserver((entries)=>{
         entries.forEach(en => {
-          if (en.isIntersecting) { en.target.classList.add('show'); io.unobserve(en.target); }
+          if(en.isIntersecting){ en.target.classList.add('show'); io.unobserve(en.target); }
         });
-      }, { threshold: 0.12 });
+      }, {threshold:0.12});
       items.forEach(it => io.observe(it));
     })();
 
-    /* ---------- smooth scroll for nav ---------- */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href.length > 1) { e.preventDefault(); const el = document.querySelector(href); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    // Mobile menu toggle
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      let open = false;
+
+      btn && btn.addEventListener('click', ()=> {
+        open = !open;
+        if(open){
+          // create mobile nav overlay
+          const nav = document.createElement('div');
+          nav.id = 'mobileNav';
+          // Adjusted styling to use Tailwind classes for better responsiveness and new dark theme
+          nav.className = 'fixed inset-x-3 bottom-24 top-20 z-[220] p-4 bg-dark-card rounded-2xl shadow-2xl shadow-neon-teal/20 border border-neon-teal/30 transition-all duration-300 ease-out-expo';
+          
+          nav.innerHTML = `
+            <a href="#top" class="block p-3 rounded-lg text-main-light-text no-underline font-bold transition hover:bg-neon-teal/10 hover:text-neon-teal">Home</a>
+            <a href="#about" class="block p-3 rounded-lg text-main-light-text no-underline font-bold transition hover:bg-neon-teal/10 hover:text-neon-teal">About</a>
+            <a href="#services" class="block p-3 rounded-lg text-main-light-text no-underline font-bold transition hover:bg-neon-teal/10 hover:text-neon-teal">Services</a>
+            <a href="#contact" class="block p-3 rounded-lg text-main-light-text no-underline font-bold transition hover:bg-neon-teal/10 hover:text-neon-teal">Contact</a>
+            <a href="#map" class="block p-3 rounded-lg text-main-light-text no-underline font-bold transition hover:bg-neon-teal/10 hover:text-neon-teal">Map</a>
+            
+            <div class="h-4"></div>
+            <div class="flex gap-2">
+                <a href="tel:+923459634701" class="flex-1 text-center p-3 rounded-xl bg-green-500 text-dark-base no-underline font-extrabold transition hover:bg-green-400">📞 Call Sajjad</a>
+                <a href="tel:+923105686088" class="flex-1 text-center p-3 rounded-xl bg-neon-teal text-dark-base no-underline font-extrabold transition hover:brightness-90">📞 Call Basit</a>
+            </div>
+          `;
+          document.body.appendChild(nav);
+          // add click handler to close
+          document.querySelectorAll('#mobileNav a').forEach(a => a.addEventListener('click', () => { 
+            document.getElementById('mobileNav')?.remove(); 
+            open = false; 
+          }));
+        } else {
+          document.getElementById('mobileNav')?.remove();
+        }
       });
-    });
+    })();
 
-    /* ---------- form -> WhatsApp (two recipients) ---------- */
-    // numbers must be in international format without + for wa.me but handler accepts + as well
-    function normalizeNumber(num) {
-      // remove spaces and leading plus for wa.me usage
-      return num.replace(/\s+/g, '').replace(/^\+/, '');
+    // Smooth scroll & active nav (adapted for Tailwind)
+    (function(){
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = ['#top', '#about', '#services', '#contact', '#map'].map(s => document.querySelector(s));
+      
+      // Update active class on scroll
+      function updateActive() {
+        const mid = window.scrollY + window.innerHeight / 3;
+        let activeIndex = 0;
+
+        sections.forEach((sec, i) => { 
+          // We use offsetTop + 10 to account for the sticky header height
+          if (sec && sec.offsetTop - 10 <= mid) {
+            activeIndex = i;
+          }
+        });
+
+        navLinks.forEach((n, i) => {
+          n.classList.remove('active');
+          if (i === activeIndex) {
+            n.classList.add('active');
+          }
+        });
+      }
+
+      // Add click handler for smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href.length > 1) {
+            e.preventDefault();
+            const el = document.querySelector(href);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      window.addEventListener('scroll', updateActive);
+      window.addEventListener('load', updateActive);
+    })();
+
+    // 3D Tilt Effect Script - Applied to Service Tiles
+    (function(){
+        const tiltCards = document.querySelectorAll('.tilt-wrapper');
+        
+        tiltCards.forEach(wrapper => {
+            const card = wrapper.querySelector('.tilt-card');
+            if (!card) return;
+            const maxRotation = 4; // Max rotation degree
+
+            wrapper.addEventListener('mousemove', (e) => {
+                // Get bounds relative to the tilt element
+                const rect = wrapper.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the element
+                const y = e.clientY - rect.top;  // y position within the element
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                // Calculate rotation: value from -1 to 1 based on deviation from center
+                const rotateYValue = (x - centerX) / centerX; 
+                const rotateXValue = (y - centerY) / centerY; 
+
+                // Apply rotation, reversing X direction for a natural "lift" effect
+                card.style.transform = `
+                    scale(1.03)
+                    rotateX(${rotateXValue * -maxRotation}deg)
+                    rotateY(${rotateYValue * maxRotation}deg)
+                `;
+            });
+
+            wrapper.addEventListener('mouseleave', () => {
+                // Reset transform when mouse leaves with a smooth transition
+                card.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
+            });
+        });
+    })();
+
+    // build whatsapp message and open
+    function normalizeNumber(n){ return String(n).replace(/\s+/g,'').replace(/^\+/,''); }
+    function gather(){
+      return {
+        name: document.getElementById('name')?.value.trim() || '',
+        phone: document.getElementById('phone')?.value.trim() || '',
+        address: document.getElementById('address')?.value.trim() || '',
+        service: document.getElementById('service')?.value.trim() || '',
+        message: document.getElementById('message')?.value.trim() || ''
+      };
     }
+    
+    window.sendTo = function(number){ // make function global
+      const data = gather();
+      if(!data.name || !data.phone || !data.address || !data.service){
+        showNotification('Please fill in Name, Phone, Address, and choose a Service to send an inquiry.');
+        return;
+      }
 
-    function gatherForm() {
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const address = document.getElementById('address').value.trim();
-      const service = document.getElementById('service').value.trim();
-      const message = document.getElementById('message').value.trim();
-      return { name, phone, address, service, message };
-    }
-
-    function sendFormTo(recipientNumber) {
-      // recipientNumber like '+923459634701' or '+923105686088'
-      const { name, phone, address, service, message } = gatherForm();
-      if (!name || !phone || !address || !service) { alert('Please fill Name, Phone, Address and choose a Service.'); return; }
-      const lines = [
-        'New Customer Inquiry:',
-        'Name: ' + name,
-        'Phone: ' + phone,
-        'Address: ' + address,
-        'Service: ' + service,
-        'Details: ' + (message || 'N/A'),
-        '',
-        '— From: S & B Technical Services (website)'
-      ];
-      const text = encodeURIComponent(lines.join('\n'));
-      const normalized = normalizeNumber(recipientNumber);
-      // open WhatsApp
-      document.getElementById('success').style.display = 'block';
-      setTimeout(() => {
-        window.open('https://wa.me/' + normalized + '?text=' + text, '_blank');
-        document.getElementById('success').style.display = 'none';
+      const payload = [
+        `*New Customer Inquiry from Website*`,
+        `---`,
+        `*Name*: ${data.name}`,
+        `*Phone*: ${data.phone}`,
+        `*Address*: ${data.address}`,
+        `*Service*: ${data.service}`,
+        `*Details*: ${data.message || 'N/A'}`,
+        `---`,
+        `Ready for a quick quote!`
+      ].join('\n');
+      
+      showNotification('Opening WhatsApp with your message...', false); // Non-error notification
+      
+      setTimeout(()=> {
+        const url = 'https://wa.me/' + normalizeNumber(number) + '?text=' + encodeURIComponent(payload);
+        window.open(url, '_blank');
+        document.getElementById('notify').classList.add('hidden');
       }, 700);
     }
-
-    function submitForm() { submitForm(); } // placeholder if needed
-
-    /* ---------- quick send (used earlier on hero) ---------- */
-    // hero buttons already call sendFormTo with recipient numbers
-
   </script>
 </body>
-
 </html>
